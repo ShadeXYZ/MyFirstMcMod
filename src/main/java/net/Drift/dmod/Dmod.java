@@ -1,6 +1,7 @@
 package net.Drift.dmod;
 
 import com.mojang.logging.LogUtils;
+import net.Drift.dmod.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +20,11 @@ public class Dmod {
 
     public Dmod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
